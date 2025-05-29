@@ -25,16 +25,16 @@ $result = $conn->query($sql);
 
 $data = [];
 while ($row = $result->fetch_assoc()) {
-    $created = strtotime($row['created_time']);
+    $hari = strtotime($row['hari']);
     $data[] = [
         'booking_id' => $row['booking_id'],
         'hari' => $row['hari'],
         'pemain' => $row['pemain'],
         'waktu' => $row['waktu'],
         'unit' => $row['unit'],
-        'day' => date('d', $created),
-        'month' => date('M', $created),
-        'year' => date('Y', $created)
+        'day' => date('d', $hari),
+        'month' => date('M', $hari),
+        'year' => date('Y', $hari)
     ];
 }
 
