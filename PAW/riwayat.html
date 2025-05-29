@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat</title>
+    <link rel="stylesheet" href="riwayat.css">
+    <link rel="stylesheet" href="menu.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header-page">
+                <img src="logo2.png" alt="PNG Placeholder">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="profile.php">Profile</a>
+                    <a href="daftar.html">Booking</a>
+                    <a href="reqGame.html">Ajukan Game</a>
+                    <a href="riwayat.html">Riwayat</a>
+                    <a href="kendalaDanSaran.html">Kendala dan Saran</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+
+            <div class="riwayat-container">
+                <div class="form-header">
+                    <a href="homepage.html" class="back-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Riwayat</h1>
+                </div>
+
+                <div class="form-box">
+                    <p class="greeting">Halo Filkomers,<br>Ngapain Aja?</p>
+                </div>
+                <template id="ticket-template">
+                    <div class="ticket-status">
+                        <div class="status selesai">Selesai</div>
+                        <div class="ticket">
+                            <div class="left">
+                                <span class="unit-text"
+                                    style="font-weight: bolder; font-size: 17px; margin-bottom: 10%; display: flex; align-items: center; gap: 8px; margin-left: 1% ;"></span>
+                                <span class="info">Waktu :<br></span>
+                                <div class="waktu-text"></div>
+                                <span class="info">Nomor Unit :<br></span>
+                                <div class="unit-number-text"></div>
+                            </div>
+
+                            <div class="center">
+                                <span class="info"><br><br>Pemain :<br></span>
+                                <div class="pemain-text"> </div>
+                                <span class="info">Booking ID :<br></span>
+                                <div class="booking-id-text"> </div>
+                            </div>
+
+                            <div class="right">
+                                <div class="bulan-text"></div>
+                                <div class="hari-text"></div>
+                                <div class="tahun-text"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </template>
+                <div class="jadwal-saya-container" id="daftarTiket">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="riwayat.js"></script>
+    <script src="logout.js"></script>
+    <script src="menu.js"></script>
+    <script src="menu.css" defer></script>
+</body>
+
+</html>
