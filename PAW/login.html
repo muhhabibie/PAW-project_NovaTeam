@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container-login">
+      <div class="header">
+        <img src="logo1.png" alt="PNG Placeholder">
+      </div>
+      <div class="welcome">
+        <h1>Halo,</h1>
+        <h1>Selamat Datang!</h1>
+      </div>
+      <form id="loginForm" class="form-container">
+        <h2>Masukkan Akun Anda</h2>
+        <div class="input-group">
+          <input type="text" name="nim" placeholder="NIM" required>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" name="password" placeholder="Kata Sandi" required id="password">
+          <span class="toggle" onclick="togglePassword()"></span>
+        </div>
+        <button class="login-button" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajukan Game</title>
+    <link rel="stylesheet" href="reqGame.css">
+    <link rel="stylesheet" href="menu.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header-page">
+                <img src="logo2.png" alt="PNG Placeholder">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="profile.php">Profile</a>
+                    <a href="daftar.html">Booking</a>
+                    <a href="reqGame.html">Ajukan Game</a>
+                    <a href="riwayat.html">Riwayat</a>
+                    <a href="kendalaDanSaran.html">Kendala dan Saran</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+
+            <div class="ajukan-gim-container">
+                <div class="form-header">
+                    <a href="homepage.html" class="back-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Ajukan Game</h1>
+                </div>
+
+                <div class="form-box">
+                    <p class="greeting">Halo Filkomers,<br>Mau Ajukan Gim Apa?</p>
+                </div>
+
+                <form id="gameForm" class="game-form">
+                    <label>Nama Gim :</label>
+                    <input type="text" name="nama_gim" placeholder="Masukkan nama gim" required>
+
+                    <label>Tahun Rilis :</label>
+                    <input type="number" name="tahun_rilis" placeholder="Contoh: 2020" required>
+
+                    <label>Pengembang / Penerbit :</label>
+                    <input type="text" name="pengembang" placeholder="Masukkan nama pengembang" required>
+
+                    <div class="ajukan-gim-container-button">
+                        <button type="submit" class="button">Ajukan Sekarang</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+    <script src="reqGame.js"></script>
+     <script src="logout.js"></script>
+    <script src="menu.js"></script>
+    <script src="menu.css" defer></script>
+</body>
+
+</html>

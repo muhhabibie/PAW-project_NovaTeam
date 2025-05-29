@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="menu.css" />
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header-page">
+                <img src="logo2.png" alt="PNG Placeholder">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="profile.php">Profile</a>
+                    <a href="daftar.html">Booking</a>
+                    <a href="reqGame.html">Ajukan Game</a>
+                    <a href="riwayat.html">Riwayat</a>
+                    <a href="kendalaDanSaran.html">Kendala dan Saran</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+            <div class="daftar-gim-container">
+                <h1>Daftar Gim</h1>
+                <div class="gim-scroll-container">
+                    <img src="GTA.png" class="gim-item" alt="GTA">
+                    <img src="ROBLOX.jpg" class="gim-item" alt="Roblox">
+                    <img src="RDR2.jpg" class="gim-item" alt="RDR2">
+                    <img src="FC24.png" class="gim-item" alt="FC24">
+                    <img src="it takes two.png" class="gim-item" alt="FIFA">
+                </div>
+
+            </div>
+            <h1 class="h1">Jadwal Saya</h1>
+            <div class="jadwal-saya-container">
+                
+                <div id="jadwalSayaContainer">
+                    <template id="jadwal-template">
+                        <div class="ticket">
+                            <div class="left">
+                                <span class="unit-text" style="font-weight: bolder; font-size: 17px; margin-bottom: 10%; display: flex; align-items: center; gap: 8px; margin-left: 1% ;"></span>
+                                <span class="info">Waktu :<br></span>
+                                <div class="waktu-text"></div>
+                                <span class="info">Nomor Unit :<br></span>
+                                <div class="unit-text"></div>
+                            </div>
+
+                            <div class="center">
+                                <span class="info"><br><br>Pemain :<br></span>
+                                <div class="pemain-text"> </div>
+                                <span class="info">Booking ID :<br></span>
+                                <div class="booking-id-text"> </div>
+                            </div>
+
+                            <div class="right">
+                                <div class="bulan-text">May</div>
+                                <div class="hari-text">04</div>
+                                <div class="tahun-text">2025</div>
+                            </div>
+                        </div>
+                    </template>
+                    <p>Memuat jadwal...</p>
+                </div>
+            </div>
+            <div class="buat-jadwal-main-container">
+                <button class="button" onclick="window.location.href='daftar.html'">Buat Jadwal Main</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="logout.js"></script>
+    <script src="homepage.js"></script>
+    <script src="menu.js"></script>
+    <script src="menu.css" defer></script>
+</body>
+
+</html>

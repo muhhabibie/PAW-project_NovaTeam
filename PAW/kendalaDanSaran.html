@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajukan Game</title>
+    <link rel="stylesheet" href="kendalaDanSaran.css">
+    <link rel="stylesheet" href="menu.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header-page">
+                <img src="logo2.png" alt="PNG Placeholder">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="profile.php">Profile</a>
+                    <a href="daftar.html">Booking</a>
+                    <a href="reqGame.html">Ajukan Game</a>
+                    <a href="riwayat.html">Riwayat</a>
+                    <a href="kendalaDanSaran.html">Kendala dan Saran</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+
+            <div class="ks-container">
+                <div class="form-header">
+                    <a href="homepage.html" class="back-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Kendala dan Saran</h1>
+                </div>
+
+                <div class="form-box">
+                    <p class="greeting">Halo Filkomers,<br>Adakah kendala dan saran?</p>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" method="POST">
+                    <label for="pengalaman">Bagaimana pengalaman anda?</label>
+                    <div class="textarea-wrapper">
+                        <textarea name="pengalaman" id="pengalaman" maxlength="50" required
+                            autocomplete="off"></textarea>
+                        <span class="counter" id="char-counter">0/50</span>
+                    </div>
+
+                    <label for="catatan">Catatan untuk pengembangan?</label>
+                    <input type="text" name="catatan" id="catatan" placeholder="Opsional" autocomplete="off" />
+
+                    <div class="ajukan-gim-container-button">
+                        <button class="button">Kirim Sekarang</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <script src="logout.js"></script>
+    <script src="kendalaDanSaran.js"></script>
+    <script src="menu.js"></script>
+    <script src="menu.css" defer></script>
+</body>
+
+</html>

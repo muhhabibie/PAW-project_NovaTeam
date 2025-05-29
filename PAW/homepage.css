@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif, 'Poppins';
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    height: 100%;
+}
+
+.container {
+    width: 402px;
+    height: 874px;
+    border: 1px solid #ccc;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: bottom;
+    overflow: hidden;
+}
+
+.header-page {
+    position: relative;
+    padding: 5px;
+    text-align: left;
+    margin-top: 5%;
+}
+
+.header-page img {
+    width: 40%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    margin-right: 5%;
+}
+
+.daftar-gim-container {
+    padding: 20px;
+    justify-content: start;
+    align-items: center;
+}
+
+.daftar-gim-container h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    color: #000000;
+}
+
+.gim-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+}
+
+.gim-item {
+    flex: 0 0 auto;
+    width: 147px;
+    height: 182px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.jadwal-saya-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    overflow-y: auto;
+}
+
+.h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    color: #000000;
+    margin: 5%;
+}
+
+
+.ticket {
+    background: #dcdcdc;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    gap: 4%;
+    margin-bottom: 20px;
+}
+
+.left,
+.center,
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info {
+    font-weight: bold;
+}
+
+.value {
+    font-weight: normal;
+}
+
+
+.right {
+    text-align: center;
+    border-left: 1px solid #000;
+    padding-left: 18px;
+    min-width: 80px;
+    border-left: #000 2px solid;
+    margin-top: 6%;
+}
+
+.right .bulan-text {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.right .hari-text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.right .tahun-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buat-jadwal-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16.8%;
+    margin-top: 8%;
+}
+
+.button {
+    background-color: #2E2E2E;
+    color: white;
+    width: 90%;
+    padding: 19px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #505050;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Jadwal Bermain</title>
+    <link rel="stylesheet" href="daftar.css">
+    <link rel="stylesheet" href="menu.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+          
+            <div class="header-page">
+                <img src="logo2.png" alt="Logo">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="profile.php">Profile</a>
+                    <a href="daftar.html">Booking</a>
+                    <a href="reqGame.html">Ajukan Game</a>
+                    <a href="riwayat.html">Riwayat</a>
+                    <a href="kendalaDanSaran.html">Kendala dan Saran</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+
+            <div class="back-navigation">
+                <a href="homepage.html" class="back-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h2 class="page-title">Buat Jadwal Bermain</h2>
+            </div>
+            <div class="form-box">
+                <p class="greeting">Halo Filkomers,<br>Mau Daftar Gim Apa?</p>
+            </div>
+    
+            <form class="schedule-form" id="scheduleForm">
+                <div class="jadwal-form-container">
+
+                    <input type="hidden" id="nim" value="<?php echo $_SESSION['nim']; ?>">
+
+                    <div class="form-group">
+                        <label for="tanggal">Hari :</label>
+                        <select id="tanggal" name="tanggal" required>
+                            <option value="today">Hari ini</option>
+                            <option value="tomorrow">Besok</option>
+                            <option value="day-after-tomorrow">Lusa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pemain">Pemain :</label>
+                        <div class="select-wrapper">
+                            <select id="pemain" name="pemain" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            <span>(Maksimal 2 pemain)</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit TV / Konsol :</label>
+                        <div class="unit-games" id="unitGameContainer">
+                            <button type="button" class="unit-game available" data-unit="PS-1">PS-1</button>
+                            <button type="button" class="unit-game available" data-unit="PS-2">PS-2</button>
+                            <button type="button" class="unit-game available" data-unit="XBOX-1">XBOX-1</button>
+                            <button type="button" class="unit-game available" data-unit="XBOX-2">XBOX-2</button>
+                            <button type="button" class="unit-game available" data-unit="PC">PC</button>
+                            <button type="button" class="unit-game available" data-unit="Dance Pad">Dance Pad</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Waktu :</label>
+                        <div class="time-slots" id="timeSlotsContainer">
+                            <button type="button" class="time-slot available" data-time="08:00">08:00</button>
+                            <button type="button" class="time-slot available" data-time="09:15">09:15</button>
+                            <button type="button" class="time-slot available" data-time="10:30">10:30</button>
+                            <button type="button" class="time-slot available" data-time="11:45">11:45</button>
+                            <button type="button" class="time-slot available" data-time="13:00">13:00</button>
+                            <button type="button" class="time-slot available" data-time="14:15">14:15</button>
+                            <button type="button" class="time-slot available" data-time="15:30">15.30</button>
+                            <button type="button" class="time-slot available" data-time="16:45">16:45</button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="ajukan-gim-container-button">
+                    <button type="submit" class="button">Daftar Sekarang</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+ <script src="logout.js"></script>
+    <script src="daftar.js"></script>
+    <script src="menu.js"></script>
+    <script src="menu.css" defer></script>
+</body>
+
+</html>
