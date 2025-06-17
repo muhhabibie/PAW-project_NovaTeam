@@ -115,6 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(res => res.json())
         .then(data => {
+    
+            if (data.status === 'error' && data.message === 'User belum login') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Harus Login',
+                    text: 'Anda harus login terlebih dahulu untuk booking.',
+                    confirmButtonText: 'Login Sekarang'
+                }).then(() => {
+                    window.location.href = 'login.html';
+                });
+                return;
+            }
+
+
             if (data.status === 'success') {
                 Swal.fire({
                     icon: 'success',
@@ -131,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal',
-                    text: data.message
+                    text: data.message || 'Terjadi kesalahan saat booking.'
                 });
             }
         })

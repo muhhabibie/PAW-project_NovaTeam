@@ -2,6 +2,10 @@
 session_start();
 header('Content-Type: application/json');
 
+require_once "Core/Database.php";
+require_once "Models/Feedback.php";
+require_once "Controllers/FeedbackController.php";
+
 if (!isset($_SESSION['nim'])) {
     echo json_encode([
         "status" => "error",
@@ -9,64 +13,27 @@ if (!isset($_SESSION['nim'])) {
         "message" => "Anda harus login terlebih dahulu.",
         "redirect" => "login.html"
     ]);
-    exit();
+    exit;
 }
 
-$nim = $_SESSION['nim'];
-$pengalaman = trim($_POST['pengalaman'] ?? '');
-$catatan = trim($_POST['catatan'] ?? '');
+try {
+    $db = new Database('localhost', 'root', '', 'gc_db');
+    $conn = $db->getConnection();
 
-if ($pengalaman === '') {
-    echo json_encode([
-        "status" => "warning",
-        "title" => "Input Tidak Valid",
-        "message" => "Kolom pengalaman tidak boleh kosong."
-    ]);
-    exit();
-}
+    $model = new Feedback($conn);
+    $controller = new FeedbackController($model);
 
-if (strlen($pengalaman) > 50) {
-    echo json_encode([
-        "status" => "warning",
-        "title" => "Terlalu Panjang",
-        "message" => "Pengalaman maksimal 50 karakter."
-    ]);
-    exit();
-}
+    $nim = $_SESSION['nim'];
+    $pengalaman = trim($_POST['pengalaman'] ?? '');
+    $catatan = trim($_POST['catatan'] ?? '');
 
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'gc_db';
+    $result = $controller->kirim($nim, $pengalaman, $catatan);
+    echo json_encode($result);
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
+} catch (Exception $e) {
     echo json_encode([
         "status" => "error",
-        "title" => "Koneksi Gagal",
-        "message" => "Tidak dapat terhubung ke database."
-    ]);
-    exit();
-}
-
-$stmt = $conn->prepare("INSERT INTO feedback (nim, pengalaman, catatan) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $nim, $pengalaman, $catatan);
-
-if ($stmt->execute()) {
-    echo json_encode([
-        "status" => "success",
-        "title" => "Berhasil",
-        "message" => "Masukan Anda berhasil dikirim.",
-        "redirect" => "kendalaDanSaran.html"
-    ]);
-} else {
-    echo json_encode([
-        "status" => "error",
-        "title" => "Gagal",
-        "message" => "Gagal mengirim masukan. Silakan coba lagi."
+        "title" => "Server Error",
+        "message" => $e->getMessage()
     ]);
 }
-
-$stmt->close();
-$conn->close();
-?>

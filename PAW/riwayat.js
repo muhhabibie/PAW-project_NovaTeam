@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (data.status !== 'success') {
                 console.error('Data gagal dimuat:', data.message || 'Unknown error');
-                daftarTiket.innerHTML = '<p style="text-align:center; color:red;">Gagal memuat data.</p>';
+                daftarTiket.innerHTML = '<p style="text-align:center; color:red;">Gagal memuat data. User belum login</p>';
                 return;
             }
 

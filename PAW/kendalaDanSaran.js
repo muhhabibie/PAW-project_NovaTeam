@@ -6,13 +6,13 @@ function updateCounter() {
   const length = pengalamanInput.value.length;
   counter.textContent = `${length}/50`;
 
-    if (length === 50) {
+  if (length === 50) {
     counter.style.color = "red";
   } else {
     counter.style.color = "black";
   }
-
 }
+
 pengalamanInput.addEventListener("input", updateCounter);
 
 form.addEventListener("submit", function (e) {
@@ -35,29 +35,42 @@ form.addEventListener("submit", function (e) {
     method: "POST",
     body: formData,
   })
-  .then(res => res.json())
-  .then(data => {
-    Swal.fire({
-      icon: data.status,
-      title: data.title,
-      text: data.message,
-      confirmButtonText: "OK"
-    }).then(() => {
-      if (data.status === "success" && data.redirect) {
-        window.location.href = data.redirect;
-      } else if (data.status === "success") {
-        form.reset();
-        updateCounter();
+    .then(res => res.json())
+    .then(data => {
+   
+      if (data.status === "error" && data.message === "Anda harus login terlebih dahulu.") {
+        Swal.fire({
+          icon: "warning",
+          title: "Belum Login",
+          text: "Anda harus login terlebih dahulu untuk mengirim saran.",
+          confirmButtonText: "Login"
+        }).then(() => {
+          window.location.href = "login.html";
+        });
+        return;
       }
+
+      Swal.fire({
+        icon: data.status,
+        title: data.title,
+        text: data.message,
+        confirmButtonText: "OK"
+      }).then(() => {
+        if (data.status === "success" && data.redirect) {
+          window.location.href = data.redirect;
+        } else if (data.status === "success") {
+          form.reset();
+          updateCounter();
+        }
+      });
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Terjadi kesalahan, silakan coba lagi.",
+        confirmButtonText: "OK"
+      });
+      console.error(err);
     });
-  })
-  .catch(err => {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "Terjadi kesalahan, silakan coba lagi.",
-      confirmButtonText: "OK"
-    });
-    console.error(err);
-  });
 });

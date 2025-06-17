@@ -2,39 +2,27 @@
 session_start();
 header('Content-Type: application/json');
 
-if (!isset($_SESSION['nim'])) {
-    echo json_encode(['status' => 'error', 'message' => 'User belum login']);
-    exit;
+require_once "Core/Database.php";
+require_once "Models/Jadwal.php";
+require_once "Controllers/JadwalController.php";
+
+try {
+    if (!isset($_SESSION['nim'])) {
+        echo json_encode(['status' => 'error', 'message' => 'User belum login']);
+        exit;
+    }
+
+    $nim = $_SESSION['nim'];
+
+    $db = new Database('localhost', 'root', '', 'gc_db');
+    $conn = $db->getConnection();
+
+    $model = new Jadwal($conn);
+    $controller = new JadwalController($model);
+
+    $response = $controller->index($nim);
+    echo json_encode($response);
+
+} catch (Exception $e) {
+    echo json_encode(['status' => 'error', 'message' => 'Server error: ' . $e->getMessage()]);
 }
-
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'gc_db';
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    echo json_encode(['status' => 'error', 'message' => 'Koneksi database gagal']);
-    exit;
-}
-
-$nim = $conn->real_escape_string($_SESSION['nim']);
-
-$sql = "SELECT booking_id, hari, pemain, waktu, unit FROM jadwal_booking WHERE nim='$nim' ORDER BY hari, waktu";
-
-$result = $conn->query($sql);
-
-if (!$result) {
-    echo json_encode(['status' => 'error', 'message' => 'Gagal mengambil data jadwal']);
-    exit;
-}
-
-$jadwal = [];
-while ($row = $result->fetch_assoc()) {
-    $jadwal[] = $row;
-}
-
-echo json_encode(['status' => 'success', 'data' => $jadwal]);
-
-$conn->close();
-?>

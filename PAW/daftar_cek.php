@@ -1,42 +1,24 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'gc_db';
+require_once "Core/Database.php";
+require_once "Models/Booking.php";
+require_once "Controllers/BookingController.php";
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    echo json_encode(['status' => 'error', 'message' => 'Koneksi database gagal']);
-    exit;
+try {
+    $db = new Database('localhost', 'root', '', 'gc_db');
+    $conn = $db->getConnection();
+
+    $booking = new Booking($conn);
+    $controller = new BookingController($booking);
+
+    $data = json_decode(file_get_contents('php://input'), true);
+    $hari = $data['hari'] ?? '';
+    $unit = $data['unit'] ?? '';
+
+    $result = $controller->cekTerbooking($hari, $unit);
+    echo json_encode($result);
+} catch (Exception $e) {
+    echo json_encode(['status' => 'error', 'message' => 'Server error: ' . $e->getMessage()]);
 }
-
-$data = json_decode(file_get_contents('php://input'), true);
-
-$hari = isset($data['hari']) ? $conn->real_escape_string($data['hari']) : '';
-$unit = isset($data['unit']) ? $conn->real_escape_string($data['unit']) : '';
-
-if (!$hari || !$unit) {
-    echo json_encode(['status' => 'error', 'message' => 'Parameter tidak lengkap']);
-    exit;
-}
-
-$sql = "SELECT waktu FROM jadwal_booking WHERE hari = '$hari' AND unit = '$unit'";
-$result = $conn->query($sql);
-
-$bookedTimes = [];
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $bookedTimes[] = $row['waktu'];
-    }
-    echo json_encode(['status' => 'success', 'bookedTimes' => $bookedTimes]);
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Gagal mengambil data']);
-}
-
-$conn->close();
-?>
